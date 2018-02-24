@@ -114,8 +114,12 @@ void runMenu(int menu) {
     case 2:
         // insert last music
         //-------------your code here-------------
-        cout<<"UNDER MAIN TENIS"<<endl;
 
+        P = inputMusic();
+        insertLast(L,P);
+        //----------------------------------------
+        cout<<"press enter";getche();
+        break;
         //----------------------------------------
         cout<<"press enter";getche();
         break;
@@ -132,7 +136,20 @@ void runMenu(int menu) {
     case 5:
         // play last music
         //-------------your code here-------------
-        cout<<"UNDER MAIN TENIS"<<endl;
+        cout<<"input music filename (.wav) : ";
+        cin>>x.name;
+        P = findElmByName(L, x);
+        if(P != NULL){
+            cout<<"music with filename "<<x.name<<" found."<<endl;
+            cout<<"ID      : "<<info(P).ID<<endl;
+            cout<<"Location: "<<info(P).location<<endl;
+        }
+        else{
+            cout<<"ERROR: Music with filename "<<x.name<<" not found!"<<endl;
+        }
+        //----------------------------------------
+        cout<<"press enter";getche();
+        break;
 
         //----------------------------------------
         break;
@@ -151,11 +168,19 @@ void runMenu(int menu) {
     case 7:
         // search music by ID
         //-------------your code here-------------
-        cout<<"UNDER MAIN TENIS"<<endl;
-
+       cout<<"input music ID : ";
+        cin>>x.ID;
+        P = findElmByID(L, x);
+        if(P != NULL){
+            cout<<"music found"<<endl;
+        }
+        else {
+            cout<<"music not found"<<endl;
+        }
         //----------------------------------------
         cout<<"press enter";getche();
         break;
+
     case 8:
         // play current music
         if(P!=NULL) {
@@ -172,7 +197,11 @@ void runMenu(int menu) {
     case 10:
         // play previous music
         //-------------your code here-------------
-        cout<<"UNDER MAIN TENIS"<<endl;
+        if(P!=NULL) {
+            P = prev(P);
+            playMusic(P);
+        }
+        cout<<"press enter";getche();
 
         //----------------------------------------
         break;
